@@ -2,9 +2,13 @@ name: deploy web app
 on:
   push:
     branches:
-      - master
+      - master     
 jobs:
   lint:
+    strategy:
+      matrix:
+        node-version: [18, 20]
+        operating-system: [ubuntu-latest, windows] 
     runs-on: ubuntu-latest 
     steps:
       - name: Get code
@@ -37,7 +41,7 @@ jobs:
         id: willy2  
         run: npm run test
       - name: failed test
-        if: steps.willy2.outcome == 'failure'  
+        if: failure() && steps.willy2.outcome == 'failure'  
         run: echo "Failed Test"  
       
   build:
