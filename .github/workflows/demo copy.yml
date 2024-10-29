@@ -61,6 +61,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest 
+    env:
+      my_message: "hello world"
     steps:
       - name: Get artifacts
         uses: actions/download-artifact@v4
@@ -71,4 +73,6 @@ jobs:
       - name: deploy web artifact
         run: echo "Deploying web app artifact..."   
       - name: see output
-        run: echo ${{ needs.build.outputs.my_output }}                                 
+        run: echo ${{ needs.build.outputs.my_output }}
+      - name: Get information
+        run: echo ${{ my_message }}                                    
