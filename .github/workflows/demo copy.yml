@@ -10,11 +10,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Caching Dependencies
+        id: willy
         uses: actions/cache@v4
         with:
           path: node_modules
           key: deps-node-module-${{ hashfiles('./package-lock.json') }}  
       - name: install node dependencies
+        if: steps.willy.outputs.cache-hit != 'true'
         run: npm ci
       - name: lint code
         run: npm run lint
