@@ -11,7 +11,7 @@ jobs:
         operating-system: [ubuntu-latest, windows-latest]
         exclude:
           - operating-system: windows-latest 
-    runs-on: ubuntu-latest 
+    runs-on: ${{ matrix.operating-system }} 
     steps:
       - name: Get code
         uses: actions/checkout@v3
