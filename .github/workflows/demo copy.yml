@@ -75,4 +75,4 @@ jobs:
       - name: see output
         run: echo ${{ needs.build.outputs.my_output }}
       - name: Get information
-        run: echo ${{ my_message }}                                    
+        run: echo ${{ env.my_message }}                                    
