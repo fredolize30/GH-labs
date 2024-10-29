@@ -46,5 +46,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: my-artifact
+      - name: list artifact file
+        run: ls     
       - name: deploy web artifact
         run: echo "Deploying web app artifact..."                                 
