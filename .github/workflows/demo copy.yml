@@ -42,7 +42,7 @@ jobs:
           path: ./dist 
       - name: get output
         id: willy
-        run: echo "test=hello" >> "$GITHUB_OUTPUT"       
+        run: echo "test=hello world" >> "$GITHUB_OUTPUT"       
   deploy:
     needs: build
     runs-on: ubuntu-latest 
