@@ -36,6 +36,9 @@ jobs:
       - name: Test code 
         id: willy2  
         run: npm run test
+      - name: failed test
+        if: steps.willy2.outcome == 'failure'  
+        run: echo "Failed Test"  
       
   build:
     needs: test
