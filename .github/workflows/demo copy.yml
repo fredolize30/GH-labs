@@ -10,7 +10,7 @@ jobs:
         node-version: [18, 20]
         operating-system: [ubuntu-latest, windows-latest]
         exclude:
-          - operating-system: [windows-latest] 
+          - operating-system: windows-latest 
     runs-on: ubuntu-latest 
     steps:
       - name: Get code
