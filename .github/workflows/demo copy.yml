@@ -1,0 +1,41 @@
+name: deploy web app
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: lint code
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: Test code 
+        run: npm run test
+  build:
+    needs: test
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: Build code
+        run: npm run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest 
+    steps:
+      - name: deploy web artifact
+        run: echo "Deploying web app artifact..."                                 
