@@ -26,7 +26,7 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest 
-    output:
+    outputs:
       test-output: ${{ steps.willy.outputs.my_output }}
     steps:
       - name: Get code
@@ -42,7 +42,7 @@ jobs:
           path: ./dist 
       - name: get output
           id: willy
-        run: echo "my_output= 'testing-output'" >> "$GITHUB_OUTPUT"    
+        run: echo "my_output=hello" >> "$GITHUB_OUTPUT"    
   deploy:
     needs: build
     runs-on: ubuntu-latest 
