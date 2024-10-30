@@ -3,7 +3,6 @@ on:
     workflow_call:
 jobs:
     deploy:
-        needs: build
         runs-on: ubuntu-latest 
         env:
            my_message: "hello world"
