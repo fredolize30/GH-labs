@@ -1,12 +1,12 @@
 name: Reusable workflow
 on: 
     workflow_call:
-    inputs:
-        artifact-file:
-            description: "Our artifact file"
-            required: 'true'
-            default: dist-file
-            type: string
+        inputs:
+            artifact-file:
+                description: "Our artifact file"
+                required: 'true'
+                default: dist-file
+                type: string
 jobs:
     deploy:
         runs-on: ubuntu-latest 
