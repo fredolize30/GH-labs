@@ -1,6 +1,6 @@
 name: Reusable workflow
 on: 
-    workflow_call
+    workflow_call:
 jobs:
     deploy:
         needs: build
