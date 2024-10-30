@@ -73,21 +73,4 @@ jobs:
         run: echo "test=hello world" >> "$GITHUB_OUTPUT"       
   deploy:
     needs: build
-    runs-on: ubuntu-latest 
-    env:
-      my_message: "hello world"
-    steps:
-      - name: Get artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: my-artifact
-      - name: list artifact file
-        run: ls     
-      - name: deploy web artifact
-        run: echo "Deploying web app artifact..."   
-      - name: see output
-        run: echo ${{ needs.build.outputs.my_output }}
-      - name: Get information
-        run: echo ${{ env.my_message }}
-      - name: hello world reusable workflow
-        uses:./.github/workflows/reusable.yml                                      
+    uses: ./.github/workflows/reusable.yml                                      

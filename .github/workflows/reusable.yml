@@ -1,8 +1,21 @@
 name: Reusable workflow
 on: workflow_call
 jobs:
-    hello_world:
-        runs-on: ubuntu-latest
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest 
+        env:
+           my_message: "hello world"
         steps:
-            - name: hello world output
-              run: echo "Hello World"  
+           - name: Get artifacts
+             uses: actions/download-artifact@v4
+             with:
+              name: my-artifact
+           - name: list artifact file
+             run: ls     
+           - name: deploy web artifact
+             run: echo "Deploying web app artifact..."   
+           - name: see output
+             run: echo ${{ needs.build.outputs.my_output }}
+           - name: Get information
+             run: echo ${{ env.my_message }}
