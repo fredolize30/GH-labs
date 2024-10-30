@@ -7,9 +7,15 @@ on:
                 required: true
                 default: artifact
                 type: string
+        outputs:
+            my-output:
+                description: testing outputs in reusable workflows
+                value: ${{ jobs.deploy.outputs.job-outputs }}
 jobs:
     deploy:
         runs-on: ubuntu-latest 
+        outputs:
+            job-output: ${{ steps.willy-id.outputs.test-output }}
         env:
            my_message: "hello world"
         steps:
@@ -25,3 +31,6 @@ jobs:
              run: echo ${{ needs.build.outputs.my_output }}
            - name: Get information
              run: echo ${{ env.my_message }}
+           - name: Get Output
+             id: willy-id   
+             run: echo "test-output=hello world" >> $GITHUB_OUTPUT   

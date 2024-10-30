@@ -75,4 +75,10 @@ jobs:
     needs: build
     uses: ./.github/workflows/reusable.yml
     with:
-      artifact-file: my-artifact                                      
+      artifact-file: my-artifact
+  check-output:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing reusable workflow output
+        run: echo ${{ needs.deploy.outputs.my-my_output }}                                          
