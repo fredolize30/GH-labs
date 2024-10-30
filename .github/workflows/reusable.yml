@@ -4,8 +4,8 @@ on:
         inputs:
             artifact-file:
                 description: Our artifact file
-                required: 'true'
-                default: dist-file
+                required: 'false'
+                default: my-artifact
                 type: string
 jobs:
     deploy:
