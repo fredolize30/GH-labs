@@ -1,6 +1,12 @@
 name: Reusable workflow
 on: 
     workflow_call:
+    inputs:
+        artifact-file:
+            description: "Our artifact file"
+            required: 'true'
+            default: dist-file
+            type: string
 jobs:
     deploy:
         runs-on: ubuntu-latest 
@@ -10,7 +16,7 @@ jobs:
            - name: Get artifacts
              uses: actions/download-artifact@v4
              with:
-              name: my-artifact
+              name: ${{ inputs.artifact-file }}
            - name: list artifact file
              run: ls     
            - name: deploy web artifact

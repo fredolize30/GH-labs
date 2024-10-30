@@ -73,4 +73,6 @@ jobs:
         run: echo "test=hello world" >> "$GITHUB_OUTPUT"       
   deploy:
     needs: build
-    uses: ./.github/workflows/reusable.yml                                      
+    uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-file: my-artifact                                      
